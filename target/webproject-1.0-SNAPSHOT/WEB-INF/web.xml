@@ -101,7 +101,7 @@
         <location>/error</location>
     </error-page>
     <!--Listener-->
-    <listener>  
+    <listener>
         <listener-class>
             ServletPractice.MyContextListener
         </listener-class>
