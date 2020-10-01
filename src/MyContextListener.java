@@ -26,6 +26,7 @@ public class MyContextListener implements ServletContextListener {
     public void contextInitialized(ServletContextEvent event) {
         ServletContext context = event.getServletContext();
         context.setAttribute("emf", "MyObject");
+        context.setInitParameter("test", "initparameter");
         context.log("add attribute emf");
 //        ServletContextListener.super.contextInitialized(sce); //To change body of generated methods, choose Tools | Templates.
     }

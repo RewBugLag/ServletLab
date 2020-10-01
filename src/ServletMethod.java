@@ -8,6 +8,7 @@ package ServletPractice;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Enumeration;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -44,6 +45,21 @@ public class ServletMethod extends HttpServlet {
                 String paramName = params.nextElement();
                 String paramValue = getInitParameter(paramName);
                 out.printf("<li>Name: '%s' Value: '%s'</li>", paramName, paramValue);
+            }
+            // Show ServletContextInitParameter
+            ServletContext context = getServletContext();
+            Enumeration<String> initParams = context.getInitParameterNames();
+            while (initParams.hasMoreElements()) {
+                String name = initParams.nextElement();
+                out.printf("<li>\"%s\" = \"%s\"</li>",
+                        name, context.getInitParameter(name));
+            }
+            // Show all ServletContextAttribute
+            Enumeration<String> contextParam = context.getAttributeNames();
+            while (contextParam.hasMoreElements()) {
+                String name = contextParam.nextElement();
+                out.printf("<li>\"%s\" = \"%s\"</li>",
+                        name, context.getAttribute(name));
             }
             out.print("</li></ul></ul></body></html>");
         }
